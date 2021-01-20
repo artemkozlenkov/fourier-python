@@ -1,8 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import skimage as io
-import wave
-import sys
 
 dt = 0.001
 t = np.arange(0, 1, dt)
@@ -23,9 +20,10 @@ def plot_init():
 
 
 def make_fft():
+    dt = 0.001
+    t = np.arange(0, 1, dt)
     n = len(t)
     fhat = np.fft.fft(f, n)
-    PSD = fhat * np.conj(fhat) / n  # Compute power spectrum  density(power per )
 
     freq = (1 / (dt * n)) * np.arange(n)  # Create x-axis of frequencies
     L = np.arange(1, np.floor(n / 2), dtype='int')  # Only plot the first half
