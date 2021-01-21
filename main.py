@@ -118,7 +118,7 @@ def plot_matrix():
         i += 1
 
     x = len(t)
-    psd = fftSig * np.conj(fftSig) / x
+    # psd = fftSig * np.conj(fftSig) / x
 
     i = 0
     for line in fftSig:
