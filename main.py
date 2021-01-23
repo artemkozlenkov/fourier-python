@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 dt = 0.001
 t = np.arange(0, 1, dt)
 f = np.sin(2 * np.pi * 50 * t) + np.sin(2 * np.pi * 120 * t)
 f_dist = f + 2.5 * np.random.randn(len(t))
-
 
 def plot_init():
     # plt.plot(t, f + 2.5 * np.random.randn(len(t)), color='c', linewidth=1.5, label='Noise')
@@ -117,6 +117,7 @@ def plot_matrix():
         mtrx.append([np.imag(a), np.real(a)])
         i += 1
 
+
     x = len(t)
     # psd = fftSig * np.conj(fftSig) / x
 
@@ -130,11 +131,16 @@ def plot_matrix():
 
 pass
 
+
+def convolution():
+    f =
+
 if __name__ == '__main__':
     # test_function()
     # plot_init()
-    make_fft()
+    # make_fft()
     # plot_wav()
     # plot_original_sines()
     # plot_matrix()
     # plot_sine()
+    convolution()

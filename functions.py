@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 dt = 0.001
 t = np.arange(0, 1, dt)
 l = len(t)
 freq1 = 10
 freq2 = 50
+w = 1000
 
 
 def ploty(t, f, amp, name):
@@ -61,6 +63,7 @@ def functSumNoise():
 def calculateFourier():
     return np.fft.fft(functSumNoise()[0], len(t))
 
+
 def spectralDensity():
     f = calculateFourier()
     spectrum = f * np.conj(f) / l
@@ -75,11 +78,34 @@ def spectralDensity():
 
     return spectrum
 
+
 def filterIfourier():
     idx = spectralDensity() > 150
     f = calculateFourier() * idx
     ifourier = np.fft.fft(f, l)
     return np.real(ifourier)
+
+
+def convolution():
+    sin = functSumNoise()[0]
+    window = np.ones(20)
+    window /= sum(window)
+
+    conv = np.convolve(sin, window, mode='valid')
+
+    f_noise = functSumNoise()[0]
+
+    fg, ax = plt.subplots(2, 1)
+
+    plt.sca(ax[0])
+    plt.xlim(t[0], t[-1])
+    plt.plot(t, f_noise)
+
+    plt.sca(ax[1])
+    plt.plot(conv, color='red')
+
+    # plt.plot(conv)
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -90,4 +116,5 @@ if __name__ == '__main__':
     # spectralDensity()
     # singlePlot(functSumNoise())
     # spectralDensity()
-    multiPlot(functSumClean(), (filterIfourier(), 'ifft') )
+    # multiPlot(functSumClean(), (filterIfourier(), 'ifft') )
+    convolution()
