@@ -108,6 +108,26 @@ def convolution():
     plt.show()
 
 
+def simple_convolution():
+    x = [1, 2, 3, 4, 5, 6,]
+    y = [7, 8, 9, 10, 11, 12]
+
+    conv = np.convolve(x,y)
+    plt.plot(conv)
+    plt.show()
+
+
+def advanced_convolution():
+    f = functSumNoise()[0]
+
+    avg = np.ones(20)
+    avg /= sum(avg)
+
+    conv = np.convolve(f, avg, mode='same')
+
+    plt.plot(t, conv)
+    plt.show()
+
 if __name__ == '__main__':
     # functSumNoise()
     # functFreq10()
@@ -117,4 +137,6 @@ if __name__ == '__main__':
     # singlePlot(functSumNoise())
     # spectralDensity()
     # multiPlot(functSumClean(), (filterIfourier(), 'ifft') )
-    convolution()
+    # convolution()
+    # simple_convolution()
+    advanced_convolution()
