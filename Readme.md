@@ -1,6 +1,3 @@
-#### Higher Math project 
-#### Rhein-Waal University of Applied Science 
-
 #### Topic: Integration Transform – Fourier Transform (1D) 
 
 ### Content: 
